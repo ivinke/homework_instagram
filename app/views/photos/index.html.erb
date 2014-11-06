@@ -1,35 +1,90 @@
-<h1>List of Photos</h1>
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Photogram</title>
 
-<table>
-  <tr>
-    <th>Thumbnail</th>
-    <th>Caption</th>
-    <th colspan="3">Actions</th>
-  </tr>
-<% @list_of_photos.each do |photo| %>
-  <tr>
-    <td>
-      <img src="<%= photo.source %>" width="80">
-    </td>
-    <td>
-      <%= photo.caption %>
-    </td>
-    <td>
-      <a href="http://localhost:3000/photo_details/<%= photo.id %>">Show</a>
-    </td>
-    <td>
-      <a href="http://localhost:3000/edit_photo/<%= photo.id %>">Edit</a>
-    </td>
-    <td>
-      <a href="http://localhost:3000/delete_photo/<%= photo.id %>">Delete</a>
-    </td>
-  </tr>
-<% end %>
-</table>
+  <!-- Adds Bootstrap CSS  -->
+  <link rel="stylesheet" type="text/css" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+
+  <!-- Adds Font Awesome -->
+  <link rel="stylesheet" type="text/css" href="http://maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css">
+
+  <!-- Adds your custom styles -->
+
+  <link rel="stylesheet" type="text/css" href="my_styles.css">
+
+  <!-- Adds Bootstrap Javascript -->
+  <script src="http://code.jquery.com/jquery-1.11.0.min.js"></script>
+  <script src="http://code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
+  <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+</head>
+<body>
+  <!-- Top Navigation -->
+  <nav class="navbar navbar-default navbar-fixed-top" role="navigation">
+
+    <div class="navbar-header">
+
+      <a class="navbar-brand" href="#">Photogram</a>
+    </div>
+
+    <!-- Collect the nav links, forms, and other content for toggling -->
+    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+      <ul class="nav navbar-nav">
+        <li class="active"><a href="/timeline">Link</a></li>
+        <li><a href="/my_favorites">Link</a></li>
+        <li><a href="/photos/new"><i class="fa fa-camera"></i></a></li>
+        <li><a href="/users/edit"><i class="fa fa-heart"></i></a></li>
+      </ul>
+      <ul class="nav navbar-nav navbar-right">
+        <li><a href="/users/sign_out">Link</a></li>
+        <li><a href="/users">Link</a></li>
+      </ul>
+    </div><!-- /.navbar-collapse -->
+  </nav>
 
 
-<div class="btn-group">
-  <a href="http://localhost:3000/new_photo_form" type="button" class="btn btn-primary">New Form</a>
+
+
+
+  <div class = "container">
+    <div class = "row">
+      <div class="alert alert-success" role="alert">Signed in successfully</div>
+
+
+
+    </div>
+    <div class = "row">
+      <h1>List of Photos</h1>
+
+
+
+
+        <% @list_of_photos.each do |photo| %>
+        <div class = "col-md-12 well">
+
+         <%= photo.caption %>
+          <a href="http://localhost:3000/photo_details/<%= photo.id %>">Show</a>
+          <a href="http://localhost:3000/edit_photo/<%= photo.id %>">Edit</a>
+          <a href="http://localhost:3000/delete_photo/<%= photo.id %>">Delete</a>
+        <div class = "thumbnail">
+         <img src="<%= photo.source %>" width="400" height="400">
+        </div>
+        </div>
+
+        <% end %>
+
+
+      <div class="btn-group">
+        <a href="http://localhost:3000/new_photo_form" type="button" class="btn btn-primary">Add a new Picture</a>
+      </div>
+    </div>
+    </div>
+
+
+
 </div>
+
+
+
 
 
